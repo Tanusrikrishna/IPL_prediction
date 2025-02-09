@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>IPL Score Predictor</title>
+    <style>
+        body {
+            background: url("{{ url_for('static', filename='background.jpg') }}") no-repeat center center fixed;
+            background-size: cover;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            color: white;
+        }
+        .container {
+            background:transparent ;
+            backdrop-filter: blur(20px);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            width: 350px;
+            box-shadow: 0px 0px 5px 5px grey;
+        }
+        select, input, button {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            background: yellow;
+            cursor: pointer;
+        }
+        button:hover {
+            background: orange;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>IPL Score Predictor</h1>
+        <form action="/predict" method="post">
+            <select name="batting_team" required>
+                <option value="">Select Batting Team</option>
+                <option value="Kolkata Knight Riders">Kolkata Knight Riders</option>
+                <option value="Royal Challengers Bangalore">Royal Challengers Bangalore</option>
+            </select><br>
+
+            <select name="bowling_team" required>
+                <option value="">Select Bowling Team</option>
+                <option value="Royal Challengers Bangalore">Royal Challengers Bangalore</option>
+                <option value="Kolkata Knight Riders">Kolkata Knight Riders</option>
+            </select><br>
+
+            <input type="number" name="overs" placeholder="Overs" step="0.1" required><br>
+            <input type="number" name="runs_last_5" placeholder="Runs in Last 5 Overs" required><br>
+            <input type="number" name="wickets_last_5" placeholder="Wickets in Last 5 Overs" required><br>
+            
+            <button type="submit">Predict</button>
+        </form>
+    </div>
+</body>
+</html>
